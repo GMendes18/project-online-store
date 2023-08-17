@@ -30,9 +30,9 @@ export default function Header() {
             value={ search }
             onChange={ ({ target }) => handleChange(setSearch, target) }
           />
-        <Link to="/cart" data-testid="shopping-cart-button">
-          <button>Ir para o carrinho</button>
-        </Link>
+          <Link to="/cart" data-testid="shopping-cart-button">
+            <button>Ir para o carrinho</button>
+          </Link>
           <button type="submit" data-testid="query-button">Pesquisar</button>
         </form>
       </header>

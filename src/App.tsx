@@ -8,8 +8,8 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/cart" element={<ShoppingCart />} />
+      <Route path="/" element={ <Home /> } />
+      <Route path="/cart" element={ <ShoppingCart /> } />
     </Routes>
 
   );
