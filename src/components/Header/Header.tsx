@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { handleChange } from '../../utils/utils';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
 import { ProductProps } from '../../types';
@@ -16,7 +17,8 @@ export default function Header() {
   };
 
   return (
-    <div>
+
+    <>
       <header>
         <form onSubmit={ handleSearch }>
           <input
@@ -28,7 +30,9 @@ export default function Header() {
             value={ search }
             onChange={ ({ target }) => handleChange(setSearch, target) }
           />
-
+          <Link to="/cart" data-testid="shopping-cart-button">
+            <button>Ir para o carrinho</button>
+          </Link>
           <button type="submit" data-testid="query-button">Pesquisar</button>
         </form>
       </header>
@@ -36,6 +40,6 @@ export default function Header() {
       <ProductList products={ products } />
       {' '}
       {/* Renderizar a lista de produtos aqui */}
-    </div>
+    </>
   );
 }

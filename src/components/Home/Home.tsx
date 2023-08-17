@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import { getCategories } from '../../services/api';
 import { CategorieProps } from '../../types';
@@ -22,7 +23,6 @@ export default function Home() {
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
-
         {/* Vai ser um menu, lateral, por enquanto vai ficar feio na tela */}
         <div>
           {categories.map(({ id, name }) => (
@@ -34,7 +34,6 @@ export default function Home() {
             </div>
           ))}
         </div>
-
         {/* Renderize o componente ProductList */}
         <ProductList products={ [] } />
         {' '}
