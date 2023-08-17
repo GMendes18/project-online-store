@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import { getCategories } from '../../services/api';
 import { CategorieProps } from '../../types';
+import ProductList from '../ProductList/ProductList'; // Importe o componente ProductList
 
 export default function Home() {
   const [categories, setCategories] = useState<CategorieProps[]>([]);
@@ -23,18 +24,20 @@ export default function Home() {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
         {/* Vai ser um menu, lateral, por enquanto vai ficar feio na tela */}
-        {categories.map(({ id, name }) => (
-          <div key={id}>
-            <label htmlFor={id} data-testid="category">
-              <input type="radio" name={name} id={id} />
-              {name}
-            </label>
-
-          </div>
-        ))}
+        <div>
+          {categories.map(({ id, name }) => (
+            <div key={ id }>
+              <label htmlFor={ id } data-testid="category">
+                <input type="radio" name="category" id={ id } />
+                {name}
+              </label>
+            </div>
+          ))}
+        </div>
+        {/* Renderize o componente ProductList */}
+        <ProductList products={ [] } />
+        {' '}
       </main>
-
     </>
-
   );
 }
