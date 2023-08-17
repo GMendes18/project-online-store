@@ -36,7 +36,7 @@ export default function Home() {
         </div>
 
         {/* Renderize o componente ProductList */}
-        <ProductList />
+        <ProductList products={ [] } />
         {' '}
       </main>
     </>
