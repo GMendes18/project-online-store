@@ -7,8 +7,9 @@ import { getProductsFromCategoryAndQuery } from '../../services/api';
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
   // const [loading, setLoading] = useState(true);
+  // const [cartItems, setCartItems] = useState<ProductProps[]>([]);
 
-  const { inputSearch } = useContext(UserContext);
+  const { inputSearch, cartItems, setCartItems } = useContext(UserContext);
 
   useEffect(() => {
     const getData = async () => {
@@ -25,17 +26,28 @@ function ProductList({ categorieId }: ProductListProps) {
         <p>Nenhum produto foi encontrado</p>
       ) : (
         <div>
-          {products.map(({ id, title, thumbnail, price }) => (
-            <div key={ id } data-testid="product">
-              <Link to={ `/product/${id}` } data-testid="product-detail-link">
+          {products.map((product) => {
+            const { id, title, thumbnail, price } = product;
+            return (
+              <div key={ id } data-testid="product">
+                <Link to={ `/product/${id}` } data-testid="product-detail-link">
+                  {' '}
+                  {/* Verificar se o link vai ficar aqui mesmo ou se fica melhor em outro lugar */}
+                  <h2>{title}</h2>
+                  <img src={ thumbnail } alt={ title } />
+                </Link>
+                <p>{`Preço: ${price.toFixed(2)}`}</p>
+                <button
+                  data-testid="product-add-to-cart"
+                  onClick={ () => setCartItems([...cartItems, product]) }
+                >
+                  Adicionar ao Carrinho
+                </button>
                 {' '}
-                {/* Verificar se o link vai ficar aqui mesmo ou se fica melhor em outro lugar */}
-                <h2>{title}</h2>
-                <img src={ thumbnail } alt={ title } />
-              </Link>
-              <p>{`Preço: ${price.toFixed(2)}`}</p>
-            </div>
-          ))}
+                {/* posteriormente pode virar um símbolo de mais com um carrinho, ou ter outro texto */}
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

@@ -21,7 +21,10 @@ export type ProductCardProps = {
 
 export type ContextProps = {
   inputSearch: string
-  toggleSearch: (searchValue: string) => void
+  // toggleSearch: (searchValue: string) => void
+  setInputSearch: any,
+  cartItems: any,
+  setCartItems: any
 };
 
 export type ProductListProps = {

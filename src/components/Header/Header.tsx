@@ -7,13 +7,13 @@ import UserContext from '../UserContext';
 export default function Header() {
   const [search, setSearch] = useState('');
 
-  const { toggleSearch } = useContext(UserContext);
+  const { setInputSearch } = useContext(UserContext);
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // if (!search) return;
     // navigate(`/search?q=${search}`);
-    toggleSearch(search);
+    setInputSearch(search);
   };
 
   return (
