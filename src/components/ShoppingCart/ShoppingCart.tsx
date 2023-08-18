@@ -15,11 +15,11 @@ function ShoppingCart() {
         ? <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
         : (
           <>
-            {items.map(({ id, title, thumbnail }) => {
+            {items.map(({ id, title, thumbnail }, index) => {
               // if (allItems.filter((item) => item === id).length < 1) {
               //   setAllItems([...allItems, id]);
               return (
-                <div key={ id }>
+                <div key={ id + index }>
                   <p data-testid="shopping-cart-product-name">{title}</p>
                   <img
                     src={ thumbnail }
