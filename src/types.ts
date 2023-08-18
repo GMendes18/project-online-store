@@ -8,6 +8,7 @@ export type ProductProps = {
   title: string;
   thumbnail: string;
   price: number;
+  quantityCart: number
 };
 
 export type ProductCardProps = {

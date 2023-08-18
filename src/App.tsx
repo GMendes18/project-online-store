@@ -6,15 +6,11 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Layout from './components/Layout/Layout';
 import UserContext from './components/UserContext';
 import Product from './components/Product/Product';
-import { ProductProps } from './types';
+import { useLocalStorage } from './LocalStorage';
 
 function App() {
   const [inputSearch, setInputSearch] = useState('');
-  const [cartItems, setCartItems] = useState<ProductProps[]>([]);
-
-  // const toggleSearch = (searchValue: string) => {
-  //   setInputSearch(searchValue);
-  // };
+  const [cartItems, setCartItems] = useLocalStorage('cartItems', []);
 
   return (
     <UserContext.Provider
