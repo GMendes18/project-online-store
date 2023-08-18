@@ -1,7 +1,23 @@
-import React from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductProps } from '../../types';
+import UserContext from '../UserContext';
+import { getProductsFromCategoryAndQuery } from '../../services/api';
 
-function ProductList({ products }: { products: ProductProps[] }) {
+function ProductList() {
+  const [products, setProducts] = useState<ProductProps[]>([]);
+  // const [loading, setLoading] = useState(true);
+
+  const { inputSearch } = useContext(UserContext); // falta tipar
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await getProductsFromCategoryAndQuery('', inputSearch);
+      setProducts(data.results);
+      // setLoading(false);
+    };
+    getData();
+  }, [inputSearch]);
+
   return (
     <div>
       {products.length === 0 ? (
