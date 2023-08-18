@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ProductListProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
@@ -24,15 +25,15 @@ function ProductList({ categorieId }: ProductListProps) {
         <p>Nenhum produto foi encontrado</p>
       ) : (
         <div>
-          {products.map((product) => (
-            <div key={ product.id } data-testid="product">
-              <h2>{product.title}</h2>
-              <img src={ product.thumbnail } alt={ product.title } />
-              <p>
-                Preço:
+          {products.map(({ id, title, thumbnail, price }) => (
+            <div key={ id } data-testid="product">
+              <Link to={ `/product/${id}` } data-testid="product-detail-link">
                 {' '}
-                {product.price}
-              </p>
+                {/* Verificar se o link vai ficar aqui mesmo ou se fica melhor em outro lugar */}
+                <h2>{title}</h2>
+                <img src={ thumbnail } alt={ title } />
+              </Link>
+              <p>{`Preço: ${price.toFixed(2)}`}</p>
             </div>
           ))}
         </div>
