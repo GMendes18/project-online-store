@@ -6,8 +6,8 @@ import { getProductsFromCategoryAndQuery } from '../../services/api';
 
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
+
   // const [loading, setLoading] = useState(true);
-  // const [cartItems, setCartItems] = useState<ProductProps[]>([]);
 
   const { inputSearch, cartItems, setCartItems } = useContext(UserContext);
 
@@ -20,6 +20,19 @@ function ProductList({ categorieId }: ProductListProps) {
     if (categorieId || inputSearch) getData();
   }, [inputSearch, categorieId]);
 
+  const addItem = (product: ProductProps) => {
+    const productItem = cartItems.find((item: ProductProps) => item.id === product.id);
+
+    if (!productItem) {
+      setCartItems([...cartItems, { ...product, quantityCart: 1 }]);
+    } else {
+      const newArray = cartItems.map((item: ProductProps) => {
+        if (item.id === product.id) item.quantityCart += 1;
+        return item;
+      });
+      setCartItems(newArray);
+    }
+  };
   return (
     <div>
       {products.length === 0 ? (
@@ -39,7 +52,7 @@ function ProductList({ categorieId }: ProductListProps) {
                 <p>{`Preço: ${price.toFixed(2)}`}</p>
                 <button
                   data-testid="product-add-to-cart"
-                  onClick={ () => setCartItems([...cartItems, product]) }
+                  onClick={ () => addItem(product) }
                 >
                   Adicionar ao Carrinho
                 </button>

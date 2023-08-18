@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../../services/api';
-import { ProductCardProps } from '../../types';
+import { ProductCardProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
 
 export default function Product() {
@@ -19,8 +19,18 @@ export default function Product() {
 
   const { title, thumbnail, price, condition, warranty } = itemInfo;
 
-  const addToCart = () => {
-    setCartItems([...cartItems, itemInfo]);
+  const addToCart = (product: ProductProps) => {
+    const productItem = cartItems.find((item: ProductProps) => item.id === product.id);
+
+    if (!productItem) {
+      setCartItems([...cartItems, { ...product, quantityCart: 1 }]);
+    } else {
+      const newArray = cartItems.map((item: ProductProps) => {
+        if (item.id === product.id) item.quantityCart += 1;
+        return item;
+      });
+      setCartItems(newArray);
+    }
   };
 
   return (
@@ -34,7 +44,7 @@ export default function Product() {
       {' '}
       {/* Talver nao seja sempre em reais(R$) */}
       <button
-        onClick={ addToCart }
+        onClick={ () => addToCart(itemInfo) }
         data-testid="product-detail-add-to-cart"
       >
         Adicione ao carrinho
