@@ -6,16 +6,20 @@ import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Layout from './components/Layout/Layout';
 import UserContext from './components/UserContext';
 import Product from './components/Product/Product';
+import { ProductProps } from './types';
 
 function App() {
   const [inputSearch, setInputSearch] = useState('');
+  const [cartItems, setCartItems] = useState<ProductProps[]>([]);
 
-  const toggleSearch = (searchValue: string) => {
-    setInputSearch(searchValue);
-  };
+  // const toggleSearch = (searchValue: string) => {
+  //   setInputSearch(searchValue);
+  // };
 
   return (
-    <UserContext.Provider value={ { inputSearch, toggleSearch } }>
+    <UserContext.Provider
+      value={ { inputSearch, setInputSearch, cartItems, setCartItems } }
+    >
       <Routes>
         <Route path="/" element={ <Layout /> }>
           <Route index element={ <Home /> } />
