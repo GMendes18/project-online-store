@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getCategories } from '../../services/api';
 import { CategorieProps } from '../../types';
-import ProductList from '../ProductList/ProductList'; // Importe o componente ProductList
+import ProductList from '../ProductList/ProductList';
 
 export default function Home() {
   const [categories, setCategories] = useState<CategorieProps[]>([]);
+  const [categorieId, setCategorieId] = useState('');
 
   useEffect(() => {
     const getData = async () => {
@@ -13,6 +14,10 @@ export default function Home() {
     };
     getData();
   }, []);
+
+  const handleClick = async (id: string) => {
+    setCategorieId(id);
+  };
 
   return (
     <>
@@ -24,14 +29,19 @@ export default function Home() {
         {categories.map(({ id, name }) => (
           <div key={ id }>
             <label htmlFor={ id } data-testid="category">
-              <input type="radio" name="category" id={ id } />
+              <input
+                type="radio"
+                name="category"
+                id={ id }
+                onClick={ () => handleClick(id) }
+              />
               {name}
             </label>
           </div>
         ))}
       </div>
       {/* Renderize o componente ProductList */}
-      <ProductList />
+      <ProductList categorieId={ categorieId } />
     </>
   );
 }

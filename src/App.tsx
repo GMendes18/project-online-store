@@ -9,8 +9,8 @@ import UserContext from './components/UserContext';
 function App() {
   const [inputSearch, setInputSearch] = useState('');
 
-  const toggleSearch = (inputValue: string) => {
-    setInputSearch(inputValue);
+  const toggleSearch = (searchValue: string) => {
+    setInputSearch(searchValue);
   };
 
   return (
