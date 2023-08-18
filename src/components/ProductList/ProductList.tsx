@@ -1,22 +1,22 @@
 import { useContext, useEffect, useState } from 'react';
-import { ProductProps } from '../../types';
+import { ProductListProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
 
-function ProductList() {
+function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
   // const [loading, setLoading] = useState(true);
 
-  const { inputSearch } = useContext(UserContext); // falta tipar
+  const { inputSearch } = useContext(UserContext);
 
   useEffect(() => {
     const getData = async () => {
-      const data = await getProductsFromCategoryAndQuery('', inputSearch);
+      const data = await getProductsFromCategoryAndQuery(categorieId, inputSearch);
       setProducts(data.results);
       // setLoading(false);
     };
-    getData();
-  }, [inputSearch]);
+    if (categorieId || inputSearch) getData();
+  }, [inputSearch, categorieId]);
 
   return (
     <div>

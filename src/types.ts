@@ -1,5 +1,3 @@
-import { ReactNode } from 'react';
-
 export type CategorieProps = {
   id: string;
   name: string;
@@ -13,5 +11,10 @@ export type ProductProps = {
 };
 
 export type ContextProps = {
-  children: ReactNode
+  inputSearch: string
+  toggleSearch: (searchValue: string) => void
+};
+
+export type ProductListProps = {
+  categorieId: string
 };

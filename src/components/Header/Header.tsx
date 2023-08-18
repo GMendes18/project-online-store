@@ -2,15 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { handleChange } from '../../utils/utils';
 
-// import { ProductProps } from '../../types';
-
 import UserContext from '../UserContext';
 
 export default function Header() {
   const [search, setSearch] = useState('');
-  /*  const [products, setProducts] = useState<ProductProps[]>([]); // Defina o tipo aqui */
 
-  const { toggleSearch } = useContext(UserContext); // falta tipar
+  const { toggleSearch } = useContext(UserContext);
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
