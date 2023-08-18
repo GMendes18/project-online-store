@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Layout from './components/Layout/Layout';
 import UserContext from './components/UserContext';
+import Product from './components/Product/Product';
 
 function App() {
   const [inputSearch, setInputSearch] = useState('');
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={ <Layout /> }>
           <Route index element={ <Home /> } />
           <Route path="/cart" element={ <ShoppingCart /> } />
+          <Route path="/product/:id" element={ <Product /> } />
         </Route>
         {/* <Route path="/*" element={ <NotFound /> } /> Acredito que ainda vamos implementar esse elemento */}
       </Routes>
