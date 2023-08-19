@@ -5,7 +5,7 @@ export function handleChange(setState: any, { value }:any) {
 }
 
 export function totalPrice(items: ProductProps[]) {
-  items.reduce(
+  return items.reduce(
     (acc, item) => acc + (item.price * item.quantityCart),
     0,
   ).toFixed(2);

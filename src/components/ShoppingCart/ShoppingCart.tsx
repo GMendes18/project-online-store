@@ -24,10 +24,12 @@ function ShoppingCart() {
             </div>
             <div>
               <p>Resumo do pedido</p>
-              <p>Subtotal: </p>
+              <p>{`Subtotal: ${totalPrice(items)}`}</p>
               <p>Entrega: R$0,00</p>
               {/* Tentar entender depois como funciona a logica pra colocar o frete, tem uma chave 'shipping' dentro do objeto que diz se o frete vai ser gratis ou nao, por enquanto vou deixar o frete como um valor fixo caso nao tenha o frete gratas */}
               <p>{`Total: ${totalPrice(items)}`}</p>
+              {' '}
+              {/* Aqui vai ser colocado o valor dos produtos mais o frete */}
               <Link
                 to="/cart/checkout"
                 data-testid="checkout-products"
