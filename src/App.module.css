@@ -1,17 +1,21 @@
 /* App Styles */
+.App {
+  text-align: center;
+}
+
 /* Flex container para o layout geral */
 .container {
-  display: flex;
-  justify-content: space-between; /* Distribui os elementos horizontalmente */
   align-items: flex-start; /* Alinha os elementos ao topo */
   border: 2px solid black; /* Borda para visualização */
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos horizontalmente */
   padding: 20px;
 }
 
 /* Estilo para cada flex item (rota) */
 .flexItem {
-  flex: 1; /* Cresce igualmente para ocupar o espaço disponível */
   border: 1px solid gray; /* Borda para visualização */
-  padding: 10px;
+  flex: 1; /* Cresce igualmente para ocupar o espaço disponível */
   margin: 10px;
+  padding: 10px;
 }

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ProductProps } from './types';
 
 export function useLocalStorage(key:string, initialState: ProductProps[]) {
