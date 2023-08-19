@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ProductListProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
@@ -7,8 +7,7 @@ import styles from './ProductList.module.css';
 
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
-
-  // const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
 
   const { inputSearch, cartItems, setCartItems } = useContext(UserContext);
 
@@ -16,7 +15,7 @@ function ProductList({ categorieId }: ProductListProps) {
     const getData = async () => {
       const data = await getProductsFromCategoryAndQuery(categorieId, inputSearch);
       setProducts(data.results);
-      // setLoading(false);
+      setLoading(false);
     };
     if (categorieId || inputSearch) getData();
   }, [inputSearch, categorieId]);
@@ -34,37 +33,44 @@ function ProductList({ categorieId }: ProductListProps) {
       setCartItems(newArray);
     }
   };
+
   return (
-    <div className={ styles.container }>
-      {products.length === 0 ? (
-        <p>Nenhum produto foi encontrado</p>
-      ) : (
-        <div>
-          {products.map((product) => {
-            const { id, title, thumbnail, price } = product;
-            return (
-              <div className={ styles.cards } key={ id } data-testid="product">
-                <Link to={ `/product/${id}` } data-testid="product-detail-link">
-                  {' '}
-                  {/* Verificar se o link vai ficar aqui mesmo ou se fica melhor em outro lugar */}
-                  <h3>{title}</h3>
-                  <img src={ thumbnail } alt={ title } />
-                </Link>
-                <p>{`Preço: ${price.toFixed(2)}`}</p>
-                <button
-                  data-testid="product-add-to-cart"
-                  onClick={ () => addItem(product) }
-                >
-                  Adicionar ao Carrinho
-                </button>
-                {' '}
-                {/* posteriormente pode virar um símbolo de mais com um carrinho, ou ter outro texto */}
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
+    <section>
+      <div className={ styles.container }>
+        {products.length === 0 ? (
+          <p>Nenhum produto foi encontrado</p>
+        ) : (
+          <div>
+            {products.map((product) => {
+              const { id, title, thumbnail, price } = product;
+              return (
+                <div className={ styles.cards } key={ id } data-testid="product">
+                  <Link to={ `/product/${id}` } data-testid="product-detail-link">
+                    <h3>{title}</h3>
+                    <img src={ thumbnail } alt={ title } />
+                  </Link>
+                  <p>{`Preço: ${price.toFixed(2)}`}</p>
+                  <button
+                    data-testid="product-add-to-cart"
+                    onClick={ () => addItem(product) }
+                  >
+                    Adicionar ao Carrinho
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+      <div
+        className={ `${styles.initialMessage} 
+      ${products.length === 0 ? '' : styles.hidden}` }
+      >
+        <p data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </p>
+      </div>
+    </section>
   );
 }
 

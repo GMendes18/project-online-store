@@ -44,3 +44,8 @@
   cursor: pointer;
   padding: 5px 10px;
 }
+
+.hidden {
+  display: none;
+}
+
