@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { getCategories } from '../../services/api';
 import { CategorieProps } from '../../types';
 import ProductList from '../ProductList/ProductList';
+// import styles from './Home.module.css';
 
 export default function Home() {
   const [categories, setCategories] = useState<CategorieProps[]>([]);

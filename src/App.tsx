@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import './index.css';
 import { useState } from 'react';
 import Home from './components/Home/Home';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';

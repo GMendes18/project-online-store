@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { handleChange } from '../../utils/utils';
-
+import styles from './Header.module.css';
 import UserContext from '../UserContext';
 
 export default function Header() {
@@ -18,7 +18,7 @@ export default function Header() {
 
   return (
 
-    <header>
+    <header className={ styles.header }>
       <form onSubmit={ (event) => submit(event) }>
         <input
           data-testid="query-input"

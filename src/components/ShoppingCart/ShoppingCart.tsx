@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import UserContext from '../UserContext';
 import { ProductProps } from '../../types';
 import ItemCart from '../ItemCart/ItemCart';
+// import styles from './ShoppingCart.module.css';
 
 function ShoppingCart() {
   const { cartItems } = useContext(UserContext);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ProductListProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
+// import styles from './ProductList.module.css';
 
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);

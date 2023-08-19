@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { ProductProps } from '../../types';
 import UserContext from '../UserContext';
+// import styles from './ItemCart.module.css';
 
 export default function ItemCart() {
   const { cartItems, setCartItems } = useContext(UserContext);
