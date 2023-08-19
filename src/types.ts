@@ -26,8 +26,20 @@ export type ContextProps = {
   setInputSearch: any,
   cartItems: any,
   setCartItems: any
+  userInfo: any,
+  setUserInfo: any
 };
 
 export type ProductListProps = {
   categorieId: string
+};
+
+export type UserInfoProps = {
+  name: string
+  email: string
+  cpf: string
+  phone: string
+  cep: string
+  address: string
+  payment: string
 };
