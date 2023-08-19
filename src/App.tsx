@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
-import './index.css';
 import { useState } from 'react';
+// import styles from './App.module.css';
 import Home from './components/Home/Home';
 import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 import Layout from './components/Layout/Layout';

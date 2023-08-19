@@ -1,1 +1,60 @@
-/* Estilos Home */
+/* Home.module.css */
+.container {
+  background-color: #f5f5;
+  border: 1px solid #ccc;
+  display: flex;
+  gap: 1rem;
+  padding: 20px;
+}
+
+.initialMessage {
+  border: 5px solid black;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+aside {
+  background-color: green;
+  border: 5px solid black;
+  color: red;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 5px;
+}
+
+.categoryMenu {
+  color: blue;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 5px;
+}
+
+.categoryItem {
+  background-color: #d1bcbc;
+  border: 2px solid black;
+  color: gray;
+  padding: 5px;
+}
+
+.categoryInput {
+  margin-right: 10px;
+}
+
+section {
+  background-color: #c56464;
+  border: 5px solid black;
+  color: red;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  font-size: 1rem;
+  gap: 5px;
+}
+

@@ -1,7 +1,15 @@
 /* Estilos Header */
-header {
-  background-color: black;
+.container {
+  background-color: orange;
+  box-shadow: 0 5px 15px var(--shadow-color);
   color: white;
   padding: 10px;
-  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.search {
+  background-color: #55a77a;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  padding: 5px;
 }

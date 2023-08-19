@@ -2,12 +2,14 @@
 body, h1, h2, h3, p, ul, ol, li {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
 }
 
-/* Primary Font */
 body {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 /* Global Primary Colors */
@@ -17,8 +19,8 @@ body {
   --tertiary-color: #3C91E6;
   --quaternary-color: #FA824C;
   --shadow-color: rgb(170, 170, 170);
-  --text-color: rgb(102, 102, 102);
-  --background-color: #FAFFFD;
+  --text-color: rgb(161, 40, 40);
+  --background-color: #adbeb7;
   --light-gray: #f8f8f8;
 }
 
@@ -28,11 +30,13 @@ header {
   color: white;
   padding: 10px;
   box-shadow: 0 5px 15px var(--shadow-color);
+  position: fixed;
+  width: 100%;
 }
 
 /* Main Styles*/
 main {
-  padding: 20px;
+  padding-top: 10%;
 }
 
 /* Buttons styles */

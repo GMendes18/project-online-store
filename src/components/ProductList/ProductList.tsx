@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ProductListProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
-// import styles from './ProductList.module.css';
+import styles from './ProductList.module.css';
 
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
@@ -35,7 +35,7 @@ function ProductList({ categorieId }: ProductListProps) {
     }
   };
   return (
-    <div>
+    <div className={ styles.container }>
       {products.length === 0 ? (
         <p>Nenhum produto foi encontrado</p>
       ) : (
@@ -43,11 +43,11 @@ function ProductList({ categorieId }: ProductListProps) {
           {products.map((product) => {
             const { id, title, thumbnail, price } = product;
             return (
-              <div key={ id } data-testid="product">
+              <div className={ styles.cards } key={ id } data-testid="product">
                 <Link to={ `/product/${id}` } data-testid="product-detail-link">
                   {' '}
                   {/* Verificar se o link vai ficar aqui mesmo ou se fica melhor em outro lugar */}
-                  <h2>{title}</h2>
+                  <h3>{title}</h3>
                   <img src={ thumbnail } alt={ title } />
                 </Link>
                 <p>{`Preço: ${price.toFixed(2)}`}</p>
