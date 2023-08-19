@@ -1,0 +1,21 @@
+/* App Styles */
+.App {
+  text-align: center;
+}
+
+/* Flex container para o layout geral */
+.container {
+  align-items: flex-start; /* Alinha os elementos ao topo */
+  border: 2px solid black; /* Borda para visualização */
+  display: flex;
+  justify-content: space-between; /* Distribui os elementos horizontalmente */
+  padding: 20px;
+}
+
+/* Estilo para cada flex item (rota) */
+.flexItem {
+  border: 1px solid gray; /* Borda para visualização */
+  flex: 1; /* Cresce igualmente para ocupar o espaço disponível */
+  margin: 10px;
+  padding: 10px;
+}

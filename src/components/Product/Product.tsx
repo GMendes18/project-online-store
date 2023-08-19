@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getProductById } from '../../services/api';
 import { ProductCardProps, ProductProps } from '../../types';
 import UserContext from '../UserContext';
+// import styles from './Product.module.css';
 
 export default function Product() {
   const [itemInfo, setItemInfo] = useState({} as ProductCardProps);
