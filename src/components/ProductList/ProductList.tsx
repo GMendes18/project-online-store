@@ -7,7 +7,7 @@ import styles from './ProductList.module.css';
 
 function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
-  const [setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   const { inputSearch, cartItems, setCartItems } = useContext(UserContext);
 
