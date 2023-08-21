@@ -5,7 +5,7 @@ import UserContext from '../UserContext';
 import { getProductsFromCategoryAndQuery } from '../../services/api';
 import styles from './ProductList.module.css';
 
-function ProductList({ categorieId }: ProductListProps) {
+export default function ProductList({ categorieId }: ProductListProps) {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [, setLoading] = useState(true);
 
@@ -42,7 +42,11 @@ function ProductList({ categorieId }: ProductListProps) {
         ) : (
           <div>
             {products.map((product) => {
-              const { id, title, thumbnail, price } = product;
+              const { id, title, thumbnail, price, shipping } = product;
+
+              // Verifica se o produto tem frete grátis
+              const hasFreeShipping = shipping && shipping.free_shipping;
+
               return (
                 <div className={ styles.cards } key={ id } data-testid="product">
                   <Link to={ `/product/${id}` } data-testid="product-detail-link">
@@ -50,6 +54,9 @@ function ProductList({ categorieId }: ProductListProps) {
                     <img src={ thumbnail } alt={ title } />
                   </Link>
                   <p>{`Preço: ${price.toFixed(2)}`}</p>
+                  {hasFreeShipping && (
+                    <p data-testid="free-shipping">Frete Grátis!</p>
+                  )}
                   <button
                     data-testid="product-add-to-cart"
                     onClick={ () => addItem(product) }
@@ -64,7 +71,7 @@ function ProductList({ categorieId }: ProductListProps) {
       </div>
       <div
         className={ `${styles.initialMessage} 
-      ${products.length === 0 ? '' : styles.hidden}` }
+        ${products.length === 0 ? '' : styles.hidden}` }
       >
         <p data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
@@ -73,5 +80,3 @@ function ProductList({ categorieId }: ProductListProps) {
     </section>
   );
 }
-
-export default ProductList;
