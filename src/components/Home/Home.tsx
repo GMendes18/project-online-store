@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCategories } from '../../services/api';
 import { CategorieProps } from '../../types';
 import ProductList from '../ProductList/ProductList';
@@ -7,6 +7,7 @@ import styles from './Home.module.css';
 export default function Home() {
   const [categories, setCategories] = useState<CategorieProps[]>([]);
   const [categorieId, setCategorieId] = useState('');
+  const [showInitialMessage, setShowInitialMessage] = useState(true); // Estado para controlar a mensagem inicial
 
   useEffect(() => {
     const getData = async () => {
@@ -18,17 +19,14 @@ export default function Home() {
 
   const handleClick = async (id: string) => {
     setCategorieId(id);
+    setShowInitialMessage(false); // Ao escolher uma categoria, esconde a mensagem inicial
   };
 
   return (
     <div className={ styles.container }>
-      {/* <div className={ styles.initialMessage }>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-      </div> */}
-      {/* <div className={ styles.card }> */}
       <aside>
+        <p>Categorias</p>
+        <hr />
         <div className={ styles.categoryMenu }>
           {categories.map(({ id, name }) => (
             <div key={ id } className={ styles.categoryItem }>
@@ -46,10 +44,16 @@ export default function Home() {
           ))}
         </div>
       </aside>
-      <section className={ styles.main }>
+      <main>
         <ProductList categorieId={ categorieId } />
-      </section>
+        {showInitialMessage && (
+          <div className={ styles.initialMessage }>
+            <p data-testid="home-initial-message">
+              Digite algum termo de pesquisa ou escolha uma categoria.
+            </p>
+          </div>
+        )}
+      </main>
     </div>
-  // </div>
   );
 }

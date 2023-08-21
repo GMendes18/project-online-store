@@ -1,15 +1,68 @@
 /* Estilos Header */
 .container {
-  background-color: orange;
-  box-shadow: 0 5px 15px var(--shadow-color);
-  color: white;
-  padding: 10px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .search {
-  background-color: #55a77a;
-  border: 1px solid #ccc;
+  align-items: center;
+  background: #f1f1f1;
+  border: 1px solid #f1f1f1;
   border-radius: 5px;
   display: flex;
-  padding: 5px;
+  flex-direction: row;
+  height: 2rem;
+  justify-content: space-around;
+  width: 230px;
 }
+
+.input {
+  background: none;
+  border: none;
+}
+
+.btnSearch {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.title {
+  color: #f1f1f1;
+  font-size: 35.202px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.itens {
+  height: 24px;
+  padding-left: 2.6rem;
+  padding-top: 0.7rem;
+  position: absolute;
+  width: 24px;
+  z-index: 2;
+}
+
+.qntItens {
+  color: #f1f1f1;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  height: 10px;
+  padding-left: 3.175rem;
+  padding-top: 1rem;
+  position: absolute;
+  z-index: 3;
+}
+
+.icon {
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
