@@ -40,10 +40,9 @@ export default function Home() {
           ))}
         </div>
       </aside>
-      <section className={ styles.main }>
+      <main>
         <ProductList categorieId={ categorieId } />
-      </section>
+      </main>
     </div>
-  // </div>
   );
 }

@@ -35,40 +35,40 @@ export default function ProductList({ categorieId }: ProductListProps) {
   };
 
   return (
-    <section>
-      <div className={ styles.container }>
-        {products.length === 0 ? (
-          <p>Nenhum produto foi encontrado</p>
-        ) : (
-          <div>
-            {products.map((product) => {
-              const { id, title, thumbnail, price, shipping } = product;
+    <div className={ styles.container }>
+      {products.length === 0 ? (
+        <p className={ styles.text }>
+          VOCÊ AINDA NÃO REALIZOU UMA BUSCA
+        </p>
+      ) : (
+        <div>
+          {products.map((product) => {
+            const { id, title, thumbnail, price, shipping } = product;
 
-              // Verifica se o produto tem frete grátis
-              const hasFreeShipping = shipping && shipping.free_shipping;
+            // Verifica se o produto tem frete grátis
+            const hasFreeShipping = shipping && shipping.free_shipping;
 
-              return (
-                <div className={ styles.cards } key={ id } data-testid="product">
-                  <Link to={ `/product/${id}` } data-testid="product-detail-link">
-                    <h3>{title}</h3>
-                    <img src={ thumbnail } alt={ title } />
-                  </Link>
-                  <p>{`Preço: ${price.toFixed(2)}`}</p>
-                  {hasFreeShipping && (
-                    <p data-testid="free-shipping">Frete Grátis!</p>
-                  )}
-                  <button
-                    data-testid="product-add-to-cart"
-                    onClick={ () => addItem(product) }
-                  >
-                    Adicionar ao Carrinho
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        )}
-      </div>
+            return (
+              <div className={ styles.cards } key={ id } data-testid="product">
+                <Link to={ `/product/${id}` } data-testid="product-detail-link">
+                  <h3>{title}</h3>
+                  <img src={ thumbnail } alt={ title } />
+                </Link>
+                <p>{`Preço: ${price.toFixed(2)}`}</p>
+                {hasFreeShipping && (
+                  <p data-testid="free-shipping">Frete Grátis!</p>
+                )}
+                <button
+                  data-testid="product-add-to-cart"
+                  onClick={ () => addItem(product) }
+                >
+                  Adicionar ao Carrinho
+                </button>
+              </div>
+            );
+          })}
+        </div>
+      )}
       <div
         className={ `${styles.initialMessage} 
         ${products.length === 0 ? '' : styles.hidden}` }
@@ -77,6 +77,6 @@ export default function ProductList({ categorieId }: ProductListProps) {
           Digite algum termo de pesquisa ou escolha uma categoria.
         </p>
       </div>
-    </section>
+    </div>
   );
 }
