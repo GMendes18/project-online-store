@@ -10,6 +10,7 @@ export type ProductProps = {
   price: number;
   quantityCart: number
   available_quantity: number
+  shipping: { free_shipping: boolean };
 };
 
 export type ProductCardProps = {
