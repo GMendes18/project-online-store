@@ -23,6 +23,8 @@ export default function Home() {
   return (
     <div className={ styles.container }>
       <aside>
+        <p>Categorias</p>
+        <hr />
         <div className={ styles.categoryMenu }>
           {categories.map(({ id, name }) => (
             <div key={ id } className={ styles.categoryItem }>
