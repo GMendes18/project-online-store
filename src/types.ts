@@ -9,6 +9,7 @@ export type ProductProps = {
   thumbnail: string;
   price: number;
   quantityCart: number
+  available_quantity: number
 };
 
 export type ProductCardProps = {
