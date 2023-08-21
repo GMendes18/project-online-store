@@ -8,7 +8,7 @@ import UserContext from './components/UserContext';
 import Product from './components/Product/Product';
 import { useLocalStorage } from './LocalStorage';
 import Checkout from './components/Checkout/Checkout';
-import { UserInfoProps } from './types';
+// import { UserInfoProps } from './types';
 import { user } from './utils/utils';
 
 function App() {
