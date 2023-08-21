@@ -1,6 +1,5 @@
 /* Home.module.css */
 .container {
-  background-color: rgba(216, 179, 162, 0.333);
   border: none;
   display: flex;
   gap: 1rem;
@@ -11,7 +10,7 @@
 
 aside {
   align-items: center;
-  background-color: rgba(184, 151, 151, 0.3);
+  background-color: rgba(139, 194, 128, 0.3);
   border-radius: 20px;
   display: flex;
   flex: 1;
@@ -49,4 +48,14 @@ main {
   flex: 2;
   flex-direction: column;
   gap: 5px;
+}
+
+.initialMessage {
+  border: none;
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  width: 200px;
 }
