@@ -22,12 +22,6 @@ export default function Home() {
 
   return (
     <div className={ styles.container }>
-      {/* <div className={ styles.initialMessage }>
-        <p data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </p>
-      </div> */}
-      {/* <div className={ styles.card }> */}
       <aside>
         <div className={ styles.categoryMenu }>
           {categories.map(({ id, name }) => (

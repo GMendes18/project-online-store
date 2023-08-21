@@ -1,6 +1,6 @@
 /* Home.module.css */
 .container {
-  background-color: #f5f5;
+  background-color: rgba(218, 75, 10, 0.333);
   border: 1px solid #ccc;
   display: flex;
   gap: 1rem;

@@ -22,15 +22,26 @@ export default function Header() {
       <div className={ styles.search }>
         <form onSubmit={ (event) => submit(event) }>
           <input
+            className={ styles.input }
             data-testid="query-input"
             autoComplete="off"
             type="text"
-            placeholder="Pesquisar"
+            placeholder="Digite o que você procura"
             name="search"
             value={ search }
             onChange={ ({ target }) => handleChange(setSearch, target) }
           />
-          <button type="submit" data-testid="query-button">Pesquisar</button>
+          <button
+            className={ styles.btnSearch }
+            data-testid="query-button"
+            type="submit"
+          >
+            <img
+              src="src/assets/search.svg"
+              alt="search"
+            />
+          </button>
+
         </form>
       </div>
       <div className={ styles.title }>
@@ -38,9 +49,22 @@ export default function Header() {
       </div>
       <div className={ styles.cart }>
         <Link to="/cart" data-testid="shopping-cart-button">
-          Ir para o carrinho
-          {' '}
-          {/* Acredito que deixar esse texto de em um botão fica redundante, pois o Link ja é um clicavel, entao ficaria um clicavel dentro de outro clicavel, ficaria dois elementos para executar a mesma função */}
+          <span
+            className={ styles.qntItens }
+            data-testid="shopping-cart-size"
+          >
+            0
+          </span>
+          <img
+            className={ styles.itens }
+            src="src/assets/ellipse-2.svg"
+            alt="qntItens"
+          />
+          <img
+            className={ styles.icon }
+            src="src/assets/cart.svg"
+            alt="cart"
+          />
         </Link>
       </div>
     </header>

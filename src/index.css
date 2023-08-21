@@ -1,15 +1,15 @@
 /* Reset */
-body, h1, h2, h3, p, ul, ol, li {
+/* body, h1, h2, h3, p, ul, ol, li {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: Arial, sans-serif;
   font-size: 1rem;
-}
+} */
 
 body {
   background-color: var(--background-color);
-  color: var(--text-color);
+  /* color: var(--text-color); */
 }
 
 /* Global Primary Colors */
@@ -19,39 +19,21 @@ body {
   --tertiary-color: #3C91E6;
   --quaternary-color: #FA824C;
   --shadow-color: rgb(170, 170, 170);
-  --text-color: rgb(161, 40, 40);
-  --background-color: #adbeb7;
-  --light-gray: #f8f8f8;
+  --text-color: rgb(63, 48, 48);
+  --background-color: #f5f5f5;
+}
+
+/* body Styles*/
+body {
+  width: 1280px;
+  height: 720px;
 }
 
 /* Header Styles */
 header {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 10px;
-  box-shadow: 0 5px 15px var(--shadow-color);
-  position: fixed;
+  background: #ff6f1c;
+  box-shadow: 0px 4px 8px 8px rgba(0, 0, 0, 0.10);
+  flex-shrink: 0;
+  height: 70px;
   width: 100%;
 }
-
-/* Main Styles*/
-main {
-  padding-top: 10%;
-}
-
-/* Buttons styles */
-button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Links Styles*/
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
-
