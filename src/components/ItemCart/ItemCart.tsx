@@ -6,27 +6,30 @@ import UserContext from '../UserContext';
 export default function ItemCart() {
   const { cartItems, setCartItems } = useContext(UserContext);
 
-  const deleteItem = (id:string) => {
-    const deletedItem = items.filter((item) => item.id !== id);
+  const deleteItem = (id: string) => {
+    const deletedItem = cartItems.filter((item: { id: string; }) => item.id !== id);
     setCartItems(deletedItem);
   };
 
   const addQuantity = (item: ProductProps) => {
     const newArray = cartItems.map((cardItem: ProductProps) => {
-      if (cardItem.id === item.id) cardItem.quantityCart += 1;
+      if (cardItem.id === item.id && cardItem.quantityCart
+      < cardItem.available_quantity) {
+        cardItem.quantityCart += 1;
+      }
       return cardItem;
     });
     setCartItems(newArray);
   };
 
   const removeQuantity = (item: ProductProps) => {
-    if (item.quantityCart > 1) {
-      const newArray = cartItems.map((cardItem: ProductProps) => {
-        if (cardItem.id === item.id) cardItem.quantityCart -= 1;
-        return cardItem;
-      });
-      setCartItems(newArray);
-    } /* else deleteItem(item.id); */
+    const newArray = cartItems.map((cardItem: ProductProps) => {
+      if (cardItem.id === item.id && cardItem.quantityCart > 1) {
+        cardItem.quantityCart -= 1;
+      }
+      return cardItem;
+    });
+    setCartItems(newArray);
   };
 
   const items = cartItems as ProductProps[];
@@ -39,11 +42,7 @@ export default function ItemCart() {
         return (
           <div key={ id }>
             <p data-testid="shopping-cart-product-name">{title}</p>
-            <img
-              src={ thumbnail }
-              alt={ title }
-              data-testid="product-detail-image"
-            />
+            <img src={ thumbnail } alt={ title } data-testid="product-detail-image" />
 
             <div>
               <button
@@ -52,11 +51,7 @@ export default function ItemCart() {
               >
                 -
               </button>
-              <p
-                data-testid="shopping-cart-product-quantity"
-              >
-                {quantityCart}
-              </p>
+              <p data-testid="shopping-cart-product-quantity">{quantityCart}</p>
               <button
                 onClick={ () => addQuantity(item) }
                 data-testid="product-increase-quantity"
@@ -64,10 +59,7 @@ export default function ItemCart() {
                 +
               </button>
             </div>
-            <button
-              onClick={ () => deleteItem(id) }
-              data-testid="remove-product"
-            >
+            <button onClick={ () => deleteItem(id) } data-testid="remove-product">
               Lixeira
             </button>
             <p>{`Valor total: ${(quantityCart * price).toFixed(2)}`}</p>
